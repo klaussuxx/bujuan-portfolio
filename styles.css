@@ -483,7 +483,14 @@ h1 span + span {
 }
 
 .matrix-gallery {
-  column-count: 4;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  column-count: initial;
+}
+
+.matrix-gallery .work-card {
+  margin: 0;
 }
 
 .lightbox {
@@ -556,9 +563,13 @@ h1 span + span {
     grid-template-columns: 1fr;
   }
 
-  .gallery,
-  .matrix-gallery {
+  .gallery {
     column-count: 2;
+  }
+
+  .matrix-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .brand-gallery,
@@ -643,10 +654,14 @@ h1 span + span {
     padding: 54px 16px;
   }
 
-  .gallery,
-  .matrix-gallery {
+  .gallery {
     column-count: 2;
     column-gap: 10px;
+  }
+
+  .matrix-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .brand-gallery,

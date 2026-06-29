@@ -102,11 +102,11 @@ function applyFilter(group, filter, button) {
   gallery.querySelectorAll(".work-card").forEach((card) => {
       const shouldShow = filter === "all" || card.dataset.filter === filter;
       card.classList.toggle("is-hidden", !shouldShow);
-      if (!shouldShow) card.classList.remove("is-visible");
+      card.classList.add("is-visible");
   });
   window.requestAnimationFrame(() => {
-    gallery.querySelectorAll(".work-card:not(.is-hidden)").forEach((card, index) => {
-      card.style.transitionDelay = `${Math.min(index % 3, 2) * 24}ms`;
+    gallery.querySelectorAll(".work-card:not(.is-hidden)").forEach((card) => {
+      card.style.transitionDelay = "0ms";
       card.classList.add("is-visible");
     });
     const firstVisible = gallery.querySelector(".work-card:not(.is-hidden)");
