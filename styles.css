@@ -375,7 +375,11 @@ h1 span + span {
 }
 
 .work-card {
+  display: inline-block;
+  width: 100%;
   break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
   margin: 0 0 20px;
   background: var(--panel);
   border: 1px solid var(--line);
@@ -483,14 +487,19 @@ h1 span + span {
 }
 
 .matrix-gallery {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-  column-count: initial;
+  column-count: 4;
+  column-gap: 20px;
 }
 
 .matrix-gallery .work-card {
-  margin: 0;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.matrix-gallery img {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .lightbox {
@@ -568,8 +577,8 @@ h1 span + span {
   }
 
   .matrix-gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    column-count: 2;
+    column-gap: 10px;
   }
 
   .brand-gallery,
@@ -660,8 +669,8 @@ h1 span + span {
   }
 
   .matrix-gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    column-count: 2;
+    column-gap: 10px;
   }
 
   .brand-gallery,

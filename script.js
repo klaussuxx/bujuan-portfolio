@@ -63,7 +63,7 @@ const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxCaption = document.querySelector("#lightbox-caption");
 
-function renderCards(containerId, works, hasFilter = false) {
+function renderCards(containerId, works, hasFilter = false, eagerImages = false) {
   const container = document.querySelector(containerId);
   container.innerHTML = works
     .map((work) => {
@@ -72,10 +72,12 @@ function renderCards(containerId, works, hasFilter = false) {
       const src = hasFilter ? maybeSrc : filterOrSrc;
       const variant = hasFilter ? maybeVariant : maybeSrc;
       const isCollapsed = variant === "collapsed";
+      const loading = eagerImages ? "eager" : "lazy";
+      const decoding = eagerImages ? "sync" : "async";
       return `
         <figure class="work-card ${isCollapsed ? "is-collapsed" : ""}" ${hasFilter ? `data-filter="${filter}"` : ""}>
           <button type="button" data-src="${src}" data-title="${title}" data-label="${label}">
-            <img src="${src}" alt="${title}" loading="lazy" decoding="async" />
+            <img src="${src}" alt="${title}" loading="${loading}" decoding="${decoding}" />
           </button>
           ${isCollapsed ? '<button class="expand-control" type="button">展开长图</button>' : ""}
           <figcaption><span>${title}</span><small>${label}</small></figcaption>
@@ -87,13 +89,28 @@ function renderCards(containerId, works, hasFilter = false) {
 
 renderCards("#brand-gallery", brandWorks, true);
 renderCards("#official-gallery", officialWorks, true);
-renderCards("#matrix-gallery", matrixWorks, true);
+renderCards("#matrix-gallery", matrixWorks, true, true);
 
 function setupCardReveal() {
   document.querySelectorAll(".work-card").forEach((card) => card.classList.add("is-visible"));
 }
 
 setupCardReveal();
+
+function refreshVisibleImages(gallery) {
+  gallery.querySelectorAll(".work-card:not(.is-hidden) img").forEach((img) => {
+    img.loading = "eager";
+    img.decoding = "sync";
+    const src = img.getAttribute("src");
+    if (!img.complete && src) img.src = src;
+    img.style.opacity = "0.999";
+    img.style.webkitTransform = "translateZ(0)";
+    img.style.transform = "translateZ(0)";
+    window.requestAnimationFrame(() => {
+      img.style.opacity = "1";
+    });
+  });
+}
 
 function applyFilter(group, filter, button) {
   const gallery = document.querySelector(`#${group}-gallery`);
@@ -109,6 +126,7 @@ function applyFilter(group, filter, button) {
       card.style.transitionDelay = "0ms";
       card.classList.add("is-visible");
     });
+    refreshVisibleImages(gallery);
     const firstVisible = gallery.querySelector(".work-card:not(.is-hidden)");
     if (firstVisible) {
       firstVisible.scrollIntoView({ behavior: "smooth", block: "start" });
