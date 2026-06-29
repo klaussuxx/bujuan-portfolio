@@ -63,6 +63,10 @@ const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxCaption = document.querySelector("#lightbox-caption");
 
+function getDisplaySrc(src) {
+  return src.replace("./assets/", "./assets/thumbs/").replace(/\.(png|jpe?g)$/i, ".jpg");
+}
+
 function renderCards(containerId, works, hasFilter = false, eagerImages = false) {
   const container = document.querySelector(containerId);
   container.innerHTML = works
@@ -74,10 +78,11 @@ function renderCards(containerId, works, hasFilter = false, eagerImages = false)
       const isCollapsed = variant === "collapsed";
       const loading = eagerImages ? "eager" : "lazy";
       const decoding = eagerImages ? "sync" : "async";
+      const displaySrc = getDisplaySrc(src);
       return `
         <figure class="work-card ${isCollapsed ? "is-collapsed" : ""}" ${hasFilter ? `data-filter="${filter}"` : ""}>
           <button type="button" data-src="${src}" data-title="${title}" data-label="${label}">
-            <img src="${src}" alt="${title}" loading="${loading}" decoding="${decoding}" />
+            <img src="${displaySrc}" alt="${title}" loading="${loading}" decoding="${decoding}" />
           </button>
           ${isCollapsed ? '<button class="expand-control" type="button">展开长图</button>' : ""}
           <figcaption><span>${title}</span><small>${label}</small></figcaption>
@@ -89,7 +94,7 @@ function renderCards(containerId, works, hasFilter = false, eagerImages = false)
 
 renderCards("#brand-gallery", brandWorks, true);
 renderCards("#official-gallery", officialWorks, true);
-renderCards("#matrix-gallery", matrixWorks, true, true);
+renderCards("#matrix-gallery", matrixWorks, true);
 
 function setupCardReveal() {
   document.querySelectorAll(".work-card").forEach((card) => card.classList.add("is-visible"));
