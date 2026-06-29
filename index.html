@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>不卷 APP 内容作品集 | Klaus Su</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="回到顶部">Klaus Su <span>@不卷</span></a>
+      <nav class="nav-links" aria-label="作品集导航">
+        <a href="#brand">品牌基础</a>
+        <a href="#official">官方号</a>
+        <a href="#matrix">矩阵爆款</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-visual" src="./assets/generated/hero-illustration.png" alt="不卷 APP 内容作品集主视觉" />
+        <div class="hero-copy">
+          <p class="eyebrow">Klaus Su / Content Portfolio</p>
+          <h1 id="hero-title"><span>不卷 APP 项目</span><span>作品集</span></h1>
+        </div>
+      </section>
+
+      <section class="section intro-strip" aria-label="核心结果">
+        <div>
+          <strong>1+8</strong>
+          <span>官方号 + 素人矩阵号</span>
+        </div>
+        <div>
+          <strong>1312W+</strong>
+          <span>自有矩阵累计曝光</span>
+        </div>
+        <div>
+          <strong>567W+</strong>
+          <span>自有矩阵累计浏览</span>
+        </div>
+        <div>
+          <strong>6000+</strong>
+          <span>精准用户下载激活</span>
+        </div>
+        <div>
+          <strong>200+</strong>
+          <span>创作者招募</span>
+        </div>
+        <div>
+          <strong>4W+</strong>
+          <span>端内内容资产沉淀</span>
+        </div>
+      </section>
+
+      <section class="section" id="brand">
+        <div class="section-heading">
+          <p class="eyebrow">01 Brand Foundation</p>
+          <h2>品牌基础</h2>
+          <p>从定位、故事、第一批官方内容，到视觉规范和对外物料。</p>
+        </div>
+        <div class="filter-bar" role="tablist" aria-label="品牌基础筛选">
+          <button class="filter-button is-active" type="button" data-filter-group="brand" data-filter="all">全部</button>
+          <button class="filter-button" type="button" data-filter-group="brand" data-filter="foundation">定位与故事</button>
+          <button class="filter-button" type="button" data-filter-group="brand" data-filter="first-content">第一批官方内容</button>
+          <button class="filter-button" type="button" data-filter-group="brand" data-filter="visual">视觉规范</button>
+          <button class="filter-button" type="button" data-filter-group="brand" data-filter="materials">对外物料</button>
+        </div>
+        <div class="gallery brand-gallery" id="brand-gallery"></div>
+      </section>
+
+      <section class="section" id="official">
+        <div class="section-heading">
+          <p class="eyebrow">02 Official Channels</p>
+          <h2>官方号内容</h2>
+          <p>V1 是栏目探索，V2 聚焦 APP 价值表达；AI 物料作为轻量补充。</p>
+        </div>
+        <div class="filter-bar" role="tablist" aria-label="官方号内容筛选">
+          <button class="filter-button is-active" type="button" data-filter-group="official" data-filter="all">全部</button>
+          <button class="filter-button" type="button" data-filter-group="official" data-filter="v1">V1 栏目</button>
+          <button class="filter-button" type="button" data-filter-group="official" data-filter="v2">V2 体系</button>
+          <button class="filter-button" type="button" data-filter-group="official" data-filter="ai">AI 物料</button>
+        </div>
+        <div class="gallery official-gallery" id="official-gallery"></div>
+      </section>
+
+      <section class="section" id="matrix">
+        <div class="section-heading">
+          <p class="eyebrow">03 Matrix Posts</p>
+          <h2>素人号与矩阵爆款</h2>
+          <p>学生、老师、视频、新闻等不同内容人设下的代表作品。</p>
+        </div>
+        <div class="filter-bar" role="tablist" aria-label="矩阵爆款筛选">
+          <button class="filter-button is-active" type="button" data-filter-group="matrix" data-filter="all">全部</button>
+          <button class="filter-button" type="button" data-filter-group="matrix" data-filter="student">学生</button>
+          <button class="filter-button" type="button" data-filter-group="matrix" data-filter="teacher">老师</button>
+          <button class="filter-button" type="button" data-filter-group="matrix" data-filter="video">视频</button>
+          <button class="filter-button" type="button" data-filter-group="matrix" data-filter="news">新闻资讯</button>
+        </div>
+        <div class="gallery matrix-gallery" id="matrix-gallery"></div>
+      </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" type="button" aria-label="关闭预览">×</button>
+      <figure>
+        <img id="lightbox-image" src="" alt="" />
+        <figcaption id="lightbox-caption"></figcaption>
+      </figure>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
