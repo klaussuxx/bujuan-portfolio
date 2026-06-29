@@ -384,10 +384,9 @@ h1 span + span {
   overflow: hidden;
   position: relative;
   scroll-margin-top: 136px;
-  opacity: 0;
-  transform: translate3d(0, 14px, 0);
-  transition: opacity 420ms ease, transform 420ms ease, box-shadow 180ms ease, border-color 180ms ease;
-  will-change: opacity;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: box-shadow 180ms ease, border-color 180ms ease, filter 180ms ease;
 }
 
 .brand-gallery .work-card,
@@ -397,13 +396,13 @@ h1 span + span {
 
 .work-card.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .work-card:hover {
   border-color: rgba(25, 24, 23, 0.38);
   box-shadow: 0 14px 34px rgba(25, 24, 23, 0.13);
-  transform: translate3d(0, -3px, 0);
+  filter: brightness(1.015);
 }
 
 .work-card::before {

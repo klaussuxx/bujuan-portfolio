@@ -90,27 +90,7 @@ renderCards("#official-gallery", officialWorks, true);
 renderCards("#matrix-gallery", matrixWorks, true);
 
 function setupCardReveal() {
-  const cards = document.querySelectorAll(".work-card");
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
-    cards.forEach((card) => card.classList.add("is-visible"));
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      });
-    },
-    { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
-  );
-
-  cards.forEach((card, index) => {
-    card.style.transitionDelay = `${Math.min(index % 4, 3) * 28}ms`;
-    observer.observe(card);
-  });
+  document.querySelectorAll(".work-card").forEach((card) => card.classList.add("is-visible"));
 }
 
 setupCardReveal();
