@@ -127,10 +127,6 @@ function applyFilter(group, filter, button) {
       card.classList.add("is-visible");
     });
     refreshVisibleImages(gallery);
-    const firstVisible = gallery.querySelector(".work-card:not(.is-hidden)");
-    if (firstVisible) {
-      firstVisible.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
   });
 }
 

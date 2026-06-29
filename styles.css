@@ -502,6 +502,10 @@ h1 span + span {
   backface-visibility: hidden;
 }
 
+.matrix-gallery .work-card figcaption {
+  display: none;
+}
+
 .lightbox {
   position: fixed;
   z-index: 50;
